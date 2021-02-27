@@ -17,13 +17,27 @@ function setup() {
 function draw() {
   background(100);
 
+  if (dino.y == ground.level - 90) {
+    dino.jumps = 0;   // Allow for jumping, but only twice
+  }
+
   drawGround();   // Draw the ground
 
   dino.show();
+  dino.update();
 }
 
 function drawGround() {
   stroke(ground.colour);
   strokeWeight(ground.thickness);
   line(0, ground.level, width, ground.level);
+}
+
+function keyPressed() {
+  if (keyCode === UP_ARROW || key === ' ') {
+    if (dino.jumps < 1) {
+      dino.acc = 10;
+      dino.jumps += 1;
+    }
+  }
 }
