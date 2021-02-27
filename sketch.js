@@ -6,12 +6,15 @@ let ground = {
 
 let dino;
 
+let obstacles = [];
+
 function setup() {
   createCanvas(850, 400);
   ground.level = height - 50;
   ground.colour = color(28, 28, 28);
 
-  dino = new Dino(50, ground.level - 90, 40, 90, color(51, 51, 51));
+  dino = new Dino(50, ground.level - 90, 40, 90, color(93, 125, 134));
+  // rgb(64, 128, 0) for cacti, rgb(93, 125, 134) for dino
 }
 
 function draw() {
@@ -35,7 +38,7 @@ function drawGround() {
 
 function keyPressed() {
   if (keyCode === UP_ARROW || key === ' ') {
-    if (dino.jumps < 1) {
+    if (dino.jumps < 2 - 1) {
       dino.acc = 10;
       dino.jumps += 1;
     }
