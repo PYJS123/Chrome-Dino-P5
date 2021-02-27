@@ -6,12 +6,20 @@ class Dino {
     this.h = h;
     this.colour = colour;
 
-    this.gravity = 1;
-    this.acc = 1;
+    this.gravity = 0.5;
+    this.acc = 0;
+
+    this.jumps = 0;
   }
 
   show() {
     fill(this.colour);
     rect(this.x, this.y, this.w, this.h);
+  }
+
+  update() {
+    this.y -= this.acc;
+    this.acc -= this.gravity;
+    this.y = constrain(this.y, -Infinity, ground.level - this.h);
   }
 }
